@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dental White · Montevideo</title>
+  <meta name="description" content="Primera consulta odontológica completamente sin costo en Dental White, Montevideo. Más de 33.000 pacientes confían en nosotros." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0D0D0D;
+      --white: #FFFFFF;
+      --gray-bg: #F2F2F0;
+      --gray-card: #E8E8E6;
+      --gray-mid: #D0D0CE;
+      --gray-text: #6B6B68;
+      --font: 'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--gray-bg);
+      color: var(--black);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.94);
+      transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.18s; }
+    .delay-3 { transition-delay: 0.26s; }
+    .delay-4 { transition-delay: 0.34s; }
+    .delay-5 { transition-delay: 0.42s; }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 40px;
+      transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 16px 40px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      filter: invert(1);
+      mix-blend-mode: multiply;
+      display: block;
+    }
+    .nav-menu-btn {
+      background: transparent;
+      border: 1.5px solid var(--black);
+      border-radius: 100px;
+      padding: 9px 26px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      font-family: var(--font);
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      color: var(--black);
+    }
+    .nav-menu-btn:hover { background: var(--black); color: var(--white); }
+    .nav-emergency {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-emergency:hover { opacity: 0.55; }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      transform: translateY(-100%);
+      transition: transform 0.5s cubic-bezier(.22,1,.36,1);
+    }
+    .mobile-menu.open { transform: translateY(0); }
+    .mobile-menu-logo {
+      position: absolute;
+      top: 20px; left: 40px;
+      height: 56px;
+      width: auto;
+      opacity: 0.9;
+    }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      transition: opacity 0.2s;
+    }
+    .mobile-menu a:hover { opacity: 0.5; }
+    .mobile-menu-close {
+      position: absolute;
+      top: 28px; right: 40px;
+      background: none;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      border-radius: 100px;
+      color: var(--white);
+      font-family: var(--font);
+      padding: 9px 26px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .mobile-menu-close:hover { border-color: var(--white); }
+
+    /* ── WRAPPER ── */
+    .page-wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ──────────────────────────────────────
+       SECTION 1: HERO
+    ────────────────────────────────────── */
+    .hero-section {
+      padding-top: 88px;
+    }
+
+    /* Hero Photo Block */
+    .hero-photo {
+      border-radius: 20px;
+      overflow: hidden;
+      height: 62vh;
+      min-height: 380px;
+      max-height: 600px;
+      position: relative;
+      background: #D8D5CF;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      transform: scale(1.02);
+      transition: transform 8s ease;
+    }
+    .hero-photo:hover img { transform: scale(1); }
+    .hero-photo-badge {
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .hero-photo-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: blink 2s infinite;
+    }
+    @keyframes blink {
+      0%,100%{opacity:1;} 50%{opacity:0.3;}
+    }
+    .hero-photo-stat {
+      position: absolute;
+      bottom: 28px;
+      right: 28px;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 16px 22px;
+      color: var(--white);
+    }
+    .hero-photo-stat .stat-num {
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .hero-photo-stat .stat-label {
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.65;
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Hero Booking Block */
+    .hero-booking {
+      background: var(--black);
+      border-radius: 20px;
+      margin-top: 10px;
+      padding: 48px 52px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-booking::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-booking-title {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      margin-bottom: 32px;
+    }
+    .hero-booking-sub {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .booking-form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .booking-form input,
+    .booking-form select {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      border-radius: 100px;
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 14px 24px;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+    .booking-form input { flex: 1; min-width: 140px; }
+    .booking-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .booking-form input:focus,
+    .booking-form select:focus {
+      border-color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.06);
+    }
+    .booking-form input.error { border-color: #ef4444; animation: shake 0.4s ease; }
+    @keyframes shake {
+      0%,100%{transform:translateX(0);}
+      20%{transform:translateX(-6px);}
+      40%{transform:translateX(6px);}
+      60%{transform:translateX(-4px);}
+      80%{transform:translateX(4px);}
+    }
+    .select-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .select-wrap select {
+      padding-right: 44px;
+      min-width: 130px;
+    }
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 18px;
+      width: 8px; height: 8px;
+      border-right: 1.5px solid rgba(255,255,255,0.5);
+      border-bottom: 1.5px solid rgba(255,255,255,0.5);
+      transform: rotate(45deg) translateY(-3px);
+      pointer-events: none;
+    }
+    .select-wrap select option { background: #1a1a1a; color: #fff; }
+    .btn-book {
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      border-radius: 100px;
+      padding: 14px 36px;
+      font-family: var(--font);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-book:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px rgba(255,255,255,0.2);
+    }
+
+    /* ──────────────────────────────────────
+       SECTION 2: PROPUESTA DE VALOR
+    ────────────────────────────────────── */
+    .value-section {
+      padding: 10px 0 0;
+    }
+    .value-inner {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .value-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+    }
+    .value-list {
+      padding: 52px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .value-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 32px;
+    }
+    .value-item {
+      border-top: 1px solid #E8E8E6;
+      padding: 22px 0;
+      font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: default;
+      transition: color 0.2s;
+    }
+    .value-item:last-child { border-bottom: 1px solid #E8E8E6; }
+    .value-item:hover { color: #555; }
+    .value-item-arrow {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid #E0E0E0;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s, background 0.2s;
+      font-size: 0.85rem;
+    }
+    .value-item:hover .value-item-arrow {
+      border-color: var(--black);
+      background: var(--black);
+      color: var(--white);
+    }
+    .value-photo {
+      position: relative;
+      overflow: hidden;
+      background: #D4D1CC;
+    }
+    .value-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 6s ease;
+    }
+    .value-photo:hover img { transform: scale(1.04); }
+
+    /* Value Bottom — big typography + CTA */
+    .value-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      padding: 56px 56px 60px;
+      border-top: 1px solid #F0F0EE;
+      position: relative;
+      overflow: hidden;
+    }
+    .value-bottom-left {}1
+    .value-bottom-sublabel {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 20px;
+    }
+    .value-bottom-title {
+      font-size: clamp(64px, 9vw, 120px);
+      font-weight: 900;
+      line-height: 0.87;
+      letter-spacing: -0.04em;
+      color: var(--black);
+    }
+    .value-bottom-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+      padding-bottom: 4px;
+    }
+    .value-tagline {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      text-align: right;
+      line-height: 1.3;
+    }
+    .value-bottom-micro {
+      font-size: 0.72rem;
+      color: var(--gray-text);
+      letter-spacing: 0.05em;
+    }
+    .btn-book-white {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: 100px;
+      padding: 16px 40px;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s, background 0.25s;
+    }
+    .btn-book-white:hover {
+      background: #333;
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    /* ──────────────────────────────────────
+       SECTION 3: SERVICIOS — BENTO GRID
+    ────────────────────────────────────── */
+    .services-section {
+      padding: 10px 0 0;
+    }
+    .services-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0 16px;
+    }
+    .services-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+    }
+    .services-count {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--gray-text);
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 240px 280px;
+      gap: 10px;
+    }
+
+    .bento-cell {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Cell positions */
+    .bc-1 { grid-column: 1 / 4; grid-row: 1; background: #C8D4CC; }
+    .bc-2 { grid-column: 4 / 7; grid-row: 1; background: #C4C8D0; }
+    .bc-3 { grid-column: 7 / 13; grid-row: 1 / 2; background: #D8CEC8; }
+    .bc-main { grid-column: 1 / 7; grid-row: 2; background: var(--gray-card); }
+    .bc-card1 { grid-column: 7 / 10; grid-row: 2; background: var(--white); }
+    .bc-card2 {
+      grid-column: 10 / 13; grid-row: 2;
+      background: #1a1a1a;
+      position: relative;
+      overflow: hidden;
+    }
+    .bc-card2 .bc-card2-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+      transition: opacity 0.4s, transform 0.6s cubic-bezier(.22,1,.36,1);
+    }
+    .bc-card2:hover .bc-card2-img { opacity: 0.55; transform: scale(1.06); }
+    .bc-card2 .bc-card-title { color: var(--white); position: relative; z-index: 1; }
+    .bc-card2 .bc-card-arrow { position: relative; z-index: 1; border-color: rgba(255,255,255,0.4); color: var(--white); }
+    .bc-card2 .bc-card-arrow:hover { background: var(--white); border-color: var(--white); color: var(--black); }
+
+    .bento-cell img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+    }
+    .bento-cell:hover img { transform: scale(1.05); }
+
+    .bc-main {
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bc-main-top { }
+    .bc-main-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 16px;
+    }
+    .bc-main-title {
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--black);
+    }
+    .btn-bento {
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      border-radius: 100px;
+      padding: 13px 30px;
+      font-family: var(--font);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s;
+      align-self: flex-start;
+    }
+    .btn-bento:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    .bc-card1, .bc-card2 {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bc-card-title {
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--black);
+    }
+    .bc-card-arrow {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0,0,0,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+      align-self: flex-end;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .bc-card-arrow:hover {
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--white);
+      transform: scale(1.1);
+    }
+
+    /* ──────────────────────────────────────
+       SECTION 4: TESTIMONIOS
+    ────────────────────────────────────── */
+    .reviews-section {
+      padding: 10px 0 0;
+    }
+    .reviews-inner {
+      background: var(--black);
+      border-radius: 20px;
+      padding: 64px 56px;
+      overflow: hidden;
+    }
+    .reviews-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 52px;
+    }
+    .reviews-title-block {}
+    .reviews-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 14px;
+    }
+    .reviews-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      line-height: 0.95;
+    }
+    .reviews-score {
+      text-align: right;
+    }
+    .reviews-score .score-num {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .reviews-score .score-stars {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin: 6px 0 4px;
+      color: #FCD34D;
+    }
+    .reviews-score .score-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.08em;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 32px;
+      transition: background 0.3s, transform 0.3s cubic-bezier(.22,1,.36,1);
+    }
+    .review-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+    }
+    .review-stars {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: #FCD34D;
+      margin-bottom: 16px;
+    }
+    .review-text {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 24px;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .review-author-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .review-author-time {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 2px;
+    }
+
+    /* ──────────────────────────────────────
+       SECTION 5: STATS BAR
+    ────────────────────────────────────── */
+    .stats-section {
+      padding: 10px 0 0;
+    }
+    .stats-bar {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 0 56px;
+      display: flex;
+      align-items: stretch;
+    }
+    .stat-item {
+      flex: 1;
+      padding: 44px 0;
+      border-right: 1px solid #F0F0EE;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item:hover { background: #FAFAFA; }
+    .stat-number {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--black);
+      line-height: 1;
+    }
+    .stat-desc {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--gray-text);
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    /* ──────────────────────────────────────
+       SECTION 6: EQUIPO
+    ────────────────────────────────────── */
+    .team-section {
+      padding: 10px 0 0;
+    }
+    .team-inner {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 64px 56px;
+    }
+    .team-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+    .team-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 14px;
+    }
+    .team-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      color: var(--black);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .team-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--gray-bg);
+      position: relative;
+    }
+    .team-card-photo {
+      height: 280px;
+      overflow: hidden;
+      background: #D4D0CC;
+    }
+    .team-card-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+    }
+    .team-card:hover .team-card-photo img { transform: scale(1.06); }
+    .team-card-info {
+      padding: 24px;
+    }
+    .team-card-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .team-card-role {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--gray-text);
+      letter-spacing: 0.05em;
+    }
+
+    /* ──────────────────────────────────────
+       SECTION 7: CONTACTO / CTA FINAL
+    ────────────────────────────────────── */
+    .cta-section {
+      padding: 10px 0 24px;
+    }
+    .cta-inner {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background: var(--gray-card);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 440px;
+    }
+    .cta-left {
+      padding: 64px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cta-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 20px;
+    }
+    .cta-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      color: var(--black);
+      margin-bottom: 32px;
+    }
+    .cta-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cta-info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--black);
+      font-weight: 500;
+    }
+    .cta-info-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+    .cta-right {
+      background: var(--black);
+      padding: 64px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cta-right-title {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 36px;
+    }
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cta-form input,
+    .cta-form select,
+    .cta-form textarea {
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.88rem;
+      padding: 14px 20px;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s;
+      -webkit-appearance: none;
+    }
+    .cta-form input::placeholder,
+    .cta-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .cta-form input:focus,
+    .cta-form select:focus,
+    .cta-form textarea:focus {
+      border-color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.1);
+    }
+    .cta-form select option { background: #1a1a1a; }
+    .cta-form textarea { resize: none; height: 80px; }
+    .btn-cta-submit {
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      border-radius: 100px;
+      padding: 16px;
+      font-family: var(--font);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s, background 0.25s;
+      margin-top: 4px;
+    }
+    .btn-cta-submit:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 32px rgba(255,255,255,0.15);
+    }
+
+    /* ──────────────────────────────────────
+       FOOTER
+    ────────────────────────────────────── */
+    footer {
+      padding: 28px 0 32px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .footer-nav a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .footer-nav a:hover { opacity: 0.4; }
+    .footer-logo {
+      height: 36px;
+      width: auto;
+      filter: invert(1);
+      mix-blend-mode: multiply;
+      opacity: 0.6;
+    }
+    .footer-logo:hover { opacity: 1; }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--gray-text);
+    }
+
+    /* ──────────────────────────────────────
+       SCROLL PROGRESS BAR
+    ────────────────────────────────────── */
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: var(--black);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ──────────────────────────────────────
+       BACK TO TOP
+    ────────────────────────────────────── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s, transform 0.3s cubic-bezier(.22,1,.36,1);
+      z-index: 500;
+    }
+    .back-to-top.show { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { transform: translateY(-4px) scale(1.08); }
+
+    /* ──────────────────────────────────────
+       RESPONSIVE
+    ────────────────────────────────────── */
+    @media (max-width: 900px) {
+      #navbar { padding: 18px 20px; }
+      #navbar.scrolled { padding: 14px 20px; }
+      .page-wrap { padding: 0 16px; }
+      .hero-booking { padding: 36px 28px 40px; }
+      .value-top { grid-template-columns: 1fr; }
+      .value-photo { height: 300px; }
+      .value-bottom { grid-template-columns: 1fr; gap: 32px; }
+      .value-bottom-right { align-items: flex-start; }
+      .value-tagline { text-align: left; }
+      .bento-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px 280px 280px;
+      }
+      .bc-1 { grid-column: 1/2; grid-row: 1; }
+      .bc-2 { grid-column: 2/3; grid-row: 1; }
+      .bc-3 { grid-column: 1/3; grid-row: 2; }
+      .bc-main { grid-column: 1/3; grid-row: 3; }
+      .bc-card1 { grid-column: 1/2; grid-row: 4; }
+      .bc-card2 { grid-column: 2/3; grid-row: 4; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .reviews-inner { padding: 40px 28px; }
+      .reviews-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .stats-bar { flex-direction: column; padding: 0 28px; }
+      .stat-item { border-right: none; border-bottom: 1px solid #F0F0EE; padding: 28px 0; }
+      .stat-item:last-child { border-bottom: none; }
+      .team-inner { padding: 40px 28px; }
+      .team-grid { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .cta-left { padding: 48px 32px; }
+      .cta-right { padding: 48px 32px; }
+      .booking-form { flex-direction: column; }
+      .booking-form input,
+      .booking-form select,
+      .select-wrap,
+      .btn-book { width: 100%; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-nav { gap: 16px; }
+      .value-list { padding: 40px 32px; }
+      .value-bottom { padding: 40px 32px 44px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-photo { height: 50vh; }
+      .hero-booking-title { font-size: clamp(48px, 14vw, 72px); }
+      .nav-logo .logo-main { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SCROLL PROGRESS -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <img class="mobile-menu-logo" src="images/logodentalwhite.jpg" alt="Dental White" />
+    <button class="mobile-menu-close" id="menuClose">Cerrar</button>
+    <a href="#hero" onclick="closeMenu()">Inicio</a>
+    <a href="#servicios" onclick="closeMenu()">Servicios</a>
+    <a href="#equipo" onclick="closeMenu()">Equipo</a>
+    <a href="#resenas" onclick="closeMenu()">Reseñas</a>
+    <a href="#contacto" onclick="closeMenu()">Contacto</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <img src="images/logodentalwhite.jpg" alt="Dental White" />
+    </a>
+    <button class="nav-menu-btn" id="menuBtn">Menú</button>
+    <a href="tel:+59899513416" class="nav-emergency">Urgencias · 099 513 416</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <!-- ── HERO ── -->
+    <section class="hero-section" id="hero">
+
+      <!-- Foto editorial -->
+      <div class="hero-photo reveal">
+        <div class="hero-photo-badge">Atendiendo ahora</div>
+        <img
+          src="images/paciente-consulta.png"
+          onerror="this.src='https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=1400&q=85&auto=format&fit=crop'"
+          alt="Paciente en Dental White"
+          loading="eager"
+        />
+        <div class="hero-photo-stat">
+          <div class="stat-num">33.2K</div>
+          <div class="stat-label">Seguidores en Instagram</div>
+        </div>
+      </div>
+
+      <!-- Bloque booking negro -->
+      <div class="hero-booking" id="reservar">
+        <div class="hero-booking-title reveal delay-1">Reservá<br>Online</div>
+        <p class="hero-booking-sub reveal delay-2">Consulta sin costo · Lun–Vie 08–22hs · Sáb 08–21hs</p>
+        <form class="booking-form reveal delay-3" id="bookingForm" onsubmit="handleBook(event)">
+          <input type="text" id="bookName" placeholder="Tu nombre" autocomplete="off" />
+          <input type="tel" id="bookPhone" placeholder="Teléfono" autocomplete="off" />
+          <div class="select-wrap">
+            <select id="bookDate">
+              <option value="">Fecha</option>
+              <option>Lun 23 Mar</option>
+              <option>Mar 24 Mar</option>
+              <option>Mié 25 Mar</option>
+              <option>Jue 26 Mar</option>
+              <option>Vie 27 Mar</option>
+              <option>Sáb 28 Mar</option>
+            </select>
+          </div>
+          <div class="select-wrap">
+            <select id="bookTime">
+              <option value="">Hora</option>
+              <option>09:00</option>
+              <option>09:30</option>
+              <option>10:00</option>
+              <option>10:30</option>
+              <option>11:00</option>
+              <option>14:00</option>
+              <option>14:30</option>
+              <option>15:00</option>
+              <option>15:30</option>
+              <option>16:00</option>
+              <option>17:00</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-book">Reservar</button>
+        </form>
+      </div>
+
+    </section>
+
+    <!-- ── PROPUESTA DE VALOR ── -->
+    <section class="value-section" id="nosotros">
+      <div class="value-inner">
+
+        <div class="value-top">
+          <div class="value-list">
+            <p class="value-label reveal">Odontología de calidad</p>
+            <div class="value-item reveal delay-1">
+              Odontología Avanzada
+              <span class="value-item-arrow">→</span>
+            </div>
+            <div class="value-item reveal delay-2">
+              Equipamiento de Alta Calidad
+              <span class="value-item-arrow">→</span>
+            </div>
+            <div class="value-item reveal delay-3">
+              Equipo Profesional y Cálido
+              <span class="value-item-arrow">→</span>
+            </div>
+            <div class="value-item reveal delay-4">
+              Tecnología de Última Generación
+              <span class="value-item-arrow">→</span>
+            </div>
+          </div>
+          <div class="value-photo reveal-right">
+            <img
+              src="images/doctora-2.png"
+              onerror="this.src='https://images.unsplash.com/photo-1559829604-abe5e1b9b6d8?w=800&q=80&auto=format&fit=crop&crop=top'"
+              alt="Equipo Dental White"
+            />
+          </div>
+        </div>
+
+        <div class="value-bottom">
+          <div class="value-bottom-left">
+            <p class="value-bottom-sublabel reveal">Odontólogos de confianza en Montevideo</p>
+            <div class="value-bottom-title reveal delay-1">Cuidado<br>Dental</div>
+          </div>
+          <div class="value-bottom-right">
+            <p class="value-tagline reveal delay-2">"No creamos sonrisas<br>para tanto,<br>las creamos para siempre"</p>
+            <p class="value-bottom-micro reveal delay-3">Consulta sin costo · Sin compromiso</p>
+            <a href="#reservar" class="btn-book-white reveal delay-4">Reservar Online</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── SERVICIOS BENTO ── -->
+    <section class="services-section" id="servicios">
+      <div class="services-label-row reveal">
+        <span class="services-label">Nuestros servicios</span>
+        <span class="services-count">06 tratamientos</span>
+      </div>
+      <div class="bento-grid">
+
+        <div class="bento-cell bc-1 reveal">
+          <img
+            src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=600&q=80&auto=format&fit=crop"
+            alt="Blanqueamiento dental"
+          />
+        </div>
+
+        <div class="bento-cell bc-2 reveal delay-1">
+          <img
+            src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80&auto=format&fit=crop"
+            alt="Implantes dentales"
+          />
+        </div>
+
+        <div class="bento-cell bc-3 reveal delay-2">
+          <img
+            src="images/paciente-atencion.png"
+            onerror="this.src='https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80&auto=format&fit=crop&crop=face'"
+            alt="Atención en Dental White"
+          />
+        </div>
+
+        <div class="bento-cell bc-main reveal">
+          <div class="bc-main-top">
+            <p class="bc-main-label">Consulta sin costo</p>
+            <h3 class="bc-main-title">Servicios de<br>Restauración<br>Dental</h3>
+          </div>
+          <button class="btn-bento" onclick="document.getElementById('reservar').scrollIntoView({behavior:'smooth'})">
+            Reservar Online
+          </button>
+        </div>
+
+        <div class="bento-cell bc-card1 reveal delay-1">
+          <h3 class="bc-card-title">Ortodoncia &amp;<br>Alineadores</h3>
+          <a href="#contacto" class="bc-card-arrow">→</a>
+        </div>
+
+        <div class="bento-cell bc-card2 reveal delay-2">
+          <img class="bc-card2-img" src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=600&q=80&auto=format&fit=crop" alt="Blanqueamiento dental" />
+          <h3 class="bc-card-title">Blanqueamiento<br>Profesional</h3>
+          <a href="#contacto" class="bc-card-arrow">→</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── STATS ── -->
+    <section class="stats-section">
+      <div class="stats-bar">
+        <div class="stat-item reveal">
+          <span class="stat-number" data-target="33200">0</span>
+          <span class="stat-desc">Seguidores en Instagram</span>
+        </div>
+        <div class="stat-item reveal delay-1">
+          <span class="stat-number" data-target="195">0</span>
+          <span class="stat-desc">Publicaciones</span>
+        </div>
+        <div class="stat-item reveal delay-2">
+          <span class="stat-number" data-target="14">0</span>
+          <span class="stat-desc">Horas de atención diarias</span>
+        </div>
+        <div class="stat-item reveal delay-3">
+          <span class="stat-number" data-target="6">0</span>
+          <span class="stat-desc">Días de atención semanal</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIOS ── -->
+    <section class="reviews-section" id="resenas">
+      <div class="reviews-inner">
+        <div class="reviews-header">
+          <div class="reviews-title-block">
+            <p class="reviews-label reveal">Lo que dicen nuestros pacientes</p>
+            <h2 class="reviews-title reveal delay-1">Más de 33.000<br>sonrisas</h2>
+          </div>
+          <div class="reviews-score reveal">
+            <div class="score-num">33.2K</div>
+            <div class="score-stars">★★★★★</div>
+            <div class="score-label">Seguidores · @dental.white.uy</div>
+          </div>
+        </div>
+        <div class="reviews-grid">
+          <div class="review-card reveal">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Excelente atención desde el primer momento. La consulta inicial fue completamente gratis y el equipo fue súper profesional. ¡Ya tengo mi sonrisa nueva!"</p>
+            <div class="review-author">
+              <div class="review-avatar">MG</div>
+              <div>
+                <div class="review-author-name">María González</div>
+                <div class="review-author-time">Hace 2 semanas</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card reveal delay-1">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Me hice los alineadores y quedé encantada. El proceso fue claro, los tiempos se cumplieron y el resultado superó mis expectativas. 100% recomendable."</p>
+            <div class="review-author">
+              <div class="review-avatar">LR</div>
+              <div>
+                <div class="review-author-name">Laura Rodríguez</div>
+                <div class="review-author-time">Hace 1 mes</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card reveal delay-2">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Vine con miedo al dentista y me fui tranquilo. El ambiente es moderno y el equipo muy amable. El blanqueamiento quedó increíble, mucho mejor que esperaba."</p>
+            <div class="review-author">
+              <div class="review-avatar">JP</div>
+              <div>
+                <div class="review-author-name">Juan Pérez</div>
+                <div class="review-author-time">Hace 3 semanas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EQUIPO ── -->
+    <section class="team-section" id="equipo">
+      <div class="team-inner">
+        <div class="team-header">
+          <div>
+            <p class="team-label reveal">Nuestros profesionales</p>
+            <h2 class="team-title reveal delay-1">El equipo<br>Dental White</h2>
+          </div>
+          <a href="#reservar" class="btn-book-white reveal delay-2">Reservar turno</a>
+        </div>
+        <div class="team-grid">
+          <div class="team-card reveal">
+            <div class="team-card-photo">
+              <img
+                src="images/doctora-1.png"
+                onerror="this.src='https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500&q=80&auto=format&fit=crop&crop=face'"
+                alt="Odontóloga Dental White"
+              />
+            </div>
+            <div class="team-card-info">
+              <div class="team-card-name">Dra. Valeria Suárez</div>
+              <div class="team-card-role">Odontología General · Implantes</div>
+            </div>
+          </div>
+          <div class="team-card reveal delay-1">
+            <div class="team-card-photo">
+              <img
+                src="images/doctora-2.png"
+                onerror="this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=80&auto=format&fit=crop&crop=face'"
+                alt="Odontóloga Dental White"
+              />
+            </div>
+            <div class="team-card-info">
+              <div class="team-card-name">Dra. Carolina Méndez</div>
+              <div class="team-card-role">Directora · Estética Dental</div>
+            </div>
+          </div>
+          <div class="team-card reveal delay-2">
+            <div class="team-card-photo">
+              <img
+                src="images/staff.png"
+                onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80&auto=format&fit=crop&crop=face'"
+                alt="Staff Dental White"
+              />
+            </div>
+            <div class="team-card-info">
+              <div class="team-card-name">Lucía Ferreira</div>
+              <div class="team-card-role">Coordinadora de Pacientes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACTO / CTA FINAL ── -->
+    <section class="cta-section" id="contacto">
+      <div class="cta-inner">
+
+        <div class="cta-left">
+          <div>
+            <p class="cta-label reveal">Contactanos</p>
+            <h2 class="cta-title reveal delay-1">Tu primera<br>consulta es<br>sin costo</h2>
+          </div>
+          <div class="cta-info-list">
+            <div class="cta-info-item reveal delay-2">
+              <span class="cta-info-icon">📍</span>
+              Dr. Mario Cassinoni 1629, Montevideo
+            </div>
+            <div class="cta-info-item reveal delay-3">
+              <span class="cta-info-icon">🕐</span>
+              Lun–Vie: 08 a 22hs · Sáb: 08 a 21hs
+            </div>
+            <div class="cta-info-item reveal delay-4">
+              <span class="cta-info-icon">📱</span>
+              099 513 416
+            </div>
+            <div class="cta-info-item reveal delay-5">
+              <span class="cta-info-icon">✉</span>
+              dentalwhite2020@gmail.com
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-right">
+          <h3 class="cta-right-title reveal">Pedí tu turno<br>ahora mismo</h3>
+          <form class="cta-form" onsubmit="handleCtaForm(event)">
+            <input type="text" placeholder="Nombre completo" required />
+            <input type="tel" placeholder="Teléfono de contacto" required />
+            <input type="email" placeholder="Email (opcional)" />
+            <select>
+              <option value="">Tipo de consulta</option>
+              <option>Consulta general</option>
+              <option>Blanqueamiento</option>
+              <option>Ortodoncia / Alineadores</option>
+              <option>Implantes</option>
+              <option>Urgencia</option>
+              <option>Otro</option>
+            </select>
+            <textarea placeholder="¿Algún comentario adicional?"></textarea>
+            <button type="submit" class="btn-cta-submit">Enviar solicitud →</button>
+            <a href="https://wa.me/message/6YRTCBIZJRILG1" target="_blank" rel="noopener" style="display:block;text-align:center;color:rgba(255,255,255,0.4);font-size:0.75rem;text-decoration:none;margin-top:8px;transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">O escribinos directo por WhatsApp →</a>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- /page-wrap -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="page-wrap">
+      <div class="footer-inner">
+        <div class="footer-nav">
+          <a href="#equipo">Nuestros Odontólogos</a>
+          <a href="#nosotros">Sobre Nosotros</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#resenas">Reseñas</a>
+          <a href="tel:+59899513416">099 513 416</a>
+          <a href="https://wa.me/message/6YRTCBIZJRILG1" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://instagram.com/dental.white.uy" target="_blank" rel="noopener">@dental.white.uy</a>
+          <a href="https://www.facebook.com/p/Dental-White-100067508873838/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+          <a href="#"><img class="footer-logo" src="images/logodentalwhite.jpg" alt="Dental White" /></a>
+          <span class="footer-copy">© 2025 · Dr. Mario Cassinoni 1629, Montevideo</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── NAVBAR SCROLL ── */
+    const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('backToTop');
+    const progressBar = document.getElementById('progressBar');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+
+      // Navbar
+      navbar.classList.toggle('scrolled', scrollY > 60);
+
+      // Back to top
+      backToTop.classList.toggle('show', scrollY > 400);
+
+      // Progress bar
+      progressBar.style.width = (scrollY / docH * 100) + '%';
+    }, { passive: true });
+
+    /* ── MOBILE MENU ── */
+    const mobileMenu = document.getElementById('mobileMenu');
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    document.getElementById('menuClose').addEventListener('click', closeMenu);
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* ── SCROLL REVEAL (IntersectionObserver) ── */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ── COUNTER ANIMATION ── */
+    function animateCounter(el, target) {
+      const duration = 1800;
+      const start = performance.now();
+
+      function format(n, t) {
+        if (t >= 10000) return (n / 1000).toFixed(1) + 'K';
+        if (t >= 1000) return n.toLocaleString('es-UY');
+        return n.toString();
+      }
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+        el.textContent = format(current, target);
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = parseInt(entry.target.dataset.target);
+          animateCounter(entry.target, target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+    /* ── BOOKING FORM VALIDATION ── */
+    function handleBook(e) {
+      e.preventDefault();
+      const name = document.getElementById('bookName');
+      const phone = document.getElementById('bookPhone');
+      let valid = true;
+
+      [name, phone].forEach(input => {
+        input.classList.remove('error');
+        if (!input.value.trim()) {
+          input.classList.add('error');
+          valid = false;
+          setTimeout(() => input.classList.remove('error'), 600);
+        }
+      });
+
+      if (valid) {
+        const btn = e.target.querySelector('.btn-book');
+        btn.textContent = '✓ ¡Reserva recibida!';
+        btn.style.background = '#22c55e';
+        btn.style.color = '#fff';
+        setTimeout(() => {
+          btn.textContent = 'Reservar';
+          btn.style.background = '';
+          btn.style.color = '';
+          e.target.reset();
+        }, 3000);
+      }
+    }
+
+    /* ── CTA FORM ── */
+    function handleCtaForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-cta-submit');
+      btn.textContent = '✓ Solicitud enviada · Te contactamos pronto';
+      btn.style.background = '#22c55e';
+      setTimeout(() => {
+        btn.textContent = 'Enviar solicitud →';
+        btn.style.background = '';
+        e.target.reset();
+      }, 4000);
+    }
+
+    /* ── SMOOTH ANCHOR SCROLL ── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          const offset = 80;
+          const top = el.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* ── PARALLAX SUBTLE on hero photo ── */
+    const heroPhoto = document.querySelector('.hero-photo img');
+    if (heroPhoto) {
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        if (scrollY < 800) {
+          heroPhoto.style.transform = `scale(1.02) translateY(${scrollY * 0.12}px)`;
+        }
+      }, { passive: true });
+    }
+  </script>
+</body>
+</html>
