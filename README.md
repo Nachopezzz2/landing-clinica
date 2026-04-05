@@ -6,7 +6,8 @@ A modern, conversion-focused landing page built for a real dental clinic in Mont
 [dentalwhite.netlify.app](https://dentalwhite.netlify.app)
 
 ## 📸 Preview
-![Dental White Preview](screenshot.png)
+![Uploading image.png…]()
+
 
 ## 🛠️ Built With
 - HTML5
